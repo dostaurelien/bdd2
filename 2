@@ -1,0 +1,151 @@
+mysql> truncate school;
+Query OK, 0 rows affected (0,07 sec)
+
+mysql> select * from school;
+Empty set (0,00 sec)
+
+mysql> insert into school
+    -> (name, country, capacity)
+    -> values ('Beauxbatons Academy of Magic', 'France', 550);
+Query OK, 1 row affected (0,01 sec)
+
+mysql> insert into school (name, country, capacity) values ('Castelobru', 'Brazil', 380)
+    -> ('Durmstrang Institute', 'Norway', 570)
+    -> ('Hogwarts School of Witchcraft and Wizardry', 'United Kingdom', 450)
+    -> ('Ilvermorny School of Witchcraft and Wizardry, 'USA', 300)
+    '> ('Koldovstoretz', 'Russia', 125)
+    '> ;
+    '> ^C
+
+^C
+mysql> insert into school
+    -> (name, country, capacity)
+    -> values ('Castelobruxo', 'Brazil', 380),
+    -> ('Durmstrang Institute', 'Norway', 570),
+    -> ('Hogwarts School of Witchcraft and Wizardry', 'United Kingdom', 450),
+    -> ('Ilvermorny School of Witchcraft and Wizardry, 'USA', 300),
+    '> ('Ilvermorny School of Witchcraft and Wizardry', 'USA', 300);
+    '> ;
+    '> ^C
+
+^C
+mysql> insert into school
+    -> (name, country, capacity)
+    -> values ('Castelobruxo', 'Brazil', 380),
+    -> ('Durmstrang Institute', 'Norway', 570),
+    ->     -> ('Hogwarts School of Witchcraft and Wizardry', 'United Kingdom', 450),
+
+^C
+mysql> insert into school
+    -> (name, country, capacity)
+    -> values ('Castelobruxo', 'Brazil', 380),
+    -> ('Durmstrang Institute', 'Norway', 570),
+    -> ('Hogwarts School of Witchcraft and Wizardry', 'United Kingdom', 450),
+    -> ('Ilvermorny School of Witchcraft and Wizardry', 'USA', 300);
+Query OK, 4 rows affected (0,01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from school;
++----+----------------------------------------------+----------+----------------+
+| id | name                                         | capacity | country        |
++----+----------------------------------------------+----------+----------------+
+|  1 | Beauxbatons Academy of Magic                 |      550 | France         |
+|  2 | Castelobruxo                                 |      380 | Brazil         |
+|  3 | Durmstrang Institute                         |      570 | Norway         |
+|  4 | Hogwarts School of Witchcraft and Wizardry   |      450 | United Kingdom |
+|  5 | Ilvermorny School of Witchcraft and Wizardry |      300 | USA            |
++----+----------------------------------------------+----------+----------------+
+5 rows in set (0,02 sec)
+
+mysql> insert into school
+    -> (name, country, capacity)
+    -> ('Koldovstoretz','Russia',125),
+    -> ('Mahoutokoro School of Magic','Japan',800),
+    -> ('Uagadou School of Magic', 'Uganda',350);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''Koldovstoretz','Russia',125),
+('Mahoutokoro School of Magic','Japan',800),
+('Ua' at line 3
+mysql> insert into school (name, country, capacity) ('Koldovstoretz','Russia', 125), ('Mahoutokoro School of Magic','Japan', 800), ('Uagadou School of Magic', 'Uganda', 350);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''Koldovstoretz','Russia', 125), ('Mahoutokoro School of Magic','Japan', 800), ('' at line 1
+mysql> insert into school
+    -> (name, country, capacity)
+    -> values
+    -> ('Koldovstoretz','Russia', 125),
+    -> ('Mahoutokoro School of Magic','Japan', 800),                                                                                                              -> ('Uagadou School of Magic', 'Uganda', 350);                                                                                                            Query OK, 3 rows affected (0,02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from school;
++----+----------------------------------------------+----------+----------------+
+| id | name                                         | capacity | country        |
++----+----------------------------------------------+----------+----------------+
+|  1 | Beauxbatons Academy of Magic                 |      550 | France         |
+|  2 | Castelobruxo                                 |      380 | Brazil         |
+|  3 | Durmstrang Institute                         |      570 | Norway         |
+|  4 | Hogwarts School of Witchcraft and Wizardry   |      450 | United Kingdom |
+|  5 | Ilvermorny School of Witchcraft and Wizardry |      300 | USA            |
+|  6 | Koldovstoretz                                |      125 | Russia         |
+|  7 | Mahoutokoro School of Magic                  |      800 | Japan          |
+|  8 | Uagadou School of Magic                      |      350 | Uganda         |
++----+----------------------------------------------+----------+----------------+
+8 rows in set (0,00 sec)
+
+mysql> update into school
+    -> set country= Sweden
+    -> where id= 3;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'into school
+set country= Sweden
+where id= 3' at line 1
+mysql> update into school
+    -> insert into school (name, country, capacity) values ('Koldovstoretz','Russia', 125), ('Mahoutokoro School of Magic','Japan', 800), ('Uagadou School of Magic', 'Uganda', 350);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'into school
+insert into school (name, country, capacity) values ('Koldovstoretz'' at line 1
+mysql> update school                                                                                                                                     
+    -> set country= Sweden                                                                                             
+    -> where id= 3;                                                                                                    
+ERROR 1054 (42S22): Unknown column 'Sweden' in 'field list'
+mysql> update school                                                                                                                                              -> set country= 'Sweden'
+    -> where id= 3;
+Query OK, 1 row affected (0,03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update school
+    -> set capacity = 700
+    -> where id = 7;
+Query OK, 1 row affected (0,01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> delete from school
+    -> where name like Magic;
+ERROR 1054 (42S22): Unknown column 'Magic' in 'where clause'
+mysql> delete from school where name like 'Magic';
+Query OK, 0 rows affected (0,01 sec)
+
+mysql> select * from school;
++----+----------------------------------------------+----------+----------------+
+| id | name                                         | capacity | country        |
++----+----------------------------------------------+----------+----------------+
+|  1 | Beauxbatons Academy of Magic                 |      550 | France         |
+|  2 | Castelobruxo                                 |      380 | Brazil         |
+|  3 | Durmstrang Institute                         |      570 | Sweden         |
+|  4 | Hogwarts School of Witchcraft and Wizardry   |      450 | United Kingdom |
+|  5 | Ilvermorny School of Witchcraft and Wizardry |      300 | USA            |
+|  6 | Koldovstoretz                                |      125 | Russia         |
+|  7 | Mahoutokoro School of Magic                  |      700 | Japan          |
+|  8 | Uagadou School of Magic                      |      350 | Uganda         |
++----+----------------------------------------------+----------+----------------+
+8 rows in set (0,00 sec)
+
+mysql> delete from school where name like '%Magic%';
+Query OK, 3 rows affected (0,08 sec)
+
+mysql> select * from school;
++----+----------------------------------------------+----------+----------------+
+| id | name                                         | capacity | country        |
++----+----------------------------------------------+----------+----------------+
+|  2 | Castelobruxo                                 |      380 | Brazil         |
+|  3 | Durmstrang Institute                         |      570 | Sweden         |
+|  4 | Hogwarts School of Witchcraft and Wizardry   |      450 | United Kingdom |
+|  5 | Ilvermorny School of Witchcraft and Wizardry |      300 | USA            |
+|  6 | Koldovstoretz                                |      125 | Russia         |
++----+----------------------------------------------+----------+----------------+
+5 rows in set (0,01 sec)
